@@ -11,34 +11,36 @@ public class Main {
 		Scanner input = new Scanner(System.in);
 		Factory<String, String> myFactory = new Factory<String,String>();
 		Map<String, String> lista;
-		if(input.toString() == "1"){
+		String respuesta = input.nextLine();
+		if(respuesta == "1"){
 			lista = myFactory.getMap("HASH");
 		}
-		else if(input.toString() == "3") {
+		else if(respuesta == "3") {
 			lista = myFactory.getMap("LINKED");
 		}
-		else if(input.toString() == "2") {
+		else if(respuesta == "2") {
 			lista = myFactory.getMap("TREE");
 		}
 		else {
-			lista = myFactory.getMap(input.toString());
+			lista = myFactory.getMap(respuesta);
 		}
 		input.close();
 		System.out.println("Leyendo archivo ...");
 		try{
 			//obtiene el archivo
-	        FileReader 	fr = new FileReader("../cards_desc.txt");
+	        FileReader 	fr = new FileReader("cards_desc.txt");
 	        BufferedReader br = new BufferedReader (fr);
 	        String r = br.readLine();
 	        while(r != null) {
 	        	String[] texto = r.split("|");
-	        	lista.put(texto[0], texto[1]);
+	        	//lista.put(texto[0], texto[1]);
 	        	r = br.readLine();
 	        }
 	        br.close();
 	        System.out.println("Se leyo el archivo correctamente.");
 		}catch(Exception e){
-			System.out.println("Hubo un error en su texto");
+			System.out.println("Hubo un error en su texto:");
+			System.out.println(e.toString());
 		}
 	}
 }

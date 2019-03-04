@@ -1,0 +1,1 @@
+El hasmap tiene una complejidad constante, ya que si el hash es bueno, no tendra colisiones y se hallara la posicion buscada en una sola operacion. Si el hash llegara a repetirse, el HashMap lo soluciona de tal forma que las operaciones para lidiar con las colisiones se mantene como un numero pequeño, por lo que lo podemos considerar constante.
