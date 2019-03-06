@@ -73,6 +73,13 @@ public class Main {
 	        		String nombre = input.nextLine().toString();
 	        		if(disponibles.containsKey(nombre)) {
 	        			miLista.put(nombre, disponibles.get(nombre));
+	        			if(miListaCount.containsKey(nombre)) {
+	        				int count = Integer.parseInt(miListaCount.get(nombre))+1;
+	        				miListaCount.put(nombre, Integer.toString(count));
+	        			}
+	        			else {
+	        				miListaCount.put(nombre, "1");
+	        			}
 	        			System.out.println("Se agrego la carta a la lista.");
 	        		}
 	        		else {
@@ -90,26 +97,16 @@ public class Main {
 	        		}
 	        	}
 	        	else if(respuesta.equals("3")) {
-	        		miListaCount.clear();
-	        		miLista.forEach((k,v)-> {
-	        			if(miListaCount.containsKey(k)) {
-	        				System.out.println("A"+miListaCount.get(k));
-	        				int count = Integer.parseInt(miListaCount.get(k))+1;
-	        				miListaCount.put(k, Integer.toString(count));
-	        				System.out.println(miListaCount.get(k));
-	        			}
-	        			else {
-	        				miListaCount.put(k, "1");
-	        			}
-	        		});
-	        		miListaCount.forEach((k,v)-> 
-	        			System.out.println("Nombre:"+k+", Tipo:"+miLista.get(k)+", Cantidad:"+v)
+	        		miLista.forEach((k,v)-> 
+	        			System.out.println("Nombre:"+k+", Tipo:"+v+", Cantidad:"+miListaCount.get(k))
 	    			);
 	        	}
 	        	else if(respuesta.equals("4")) {
-	        		miLista.forEach((k,v)-> 
-	        			System.out.println("Nombre:"+k+", Tipo:"+v)
-        			);
+	        		List<Entry<String,String>> listaOrdenada = new ArrayList<>(miLista.entrySet());
+	                listaOrdenada.sort(Entry.comparingByValue());
+	                for (Entry<String, String> entry : listaOrdenada) {
+	                	System.out.println("Tipo:"+entry.getValue()+", Nombre:"+entry.getKey()+", Cantidad:"+miListaCount.get(entry.getKey()));
+	                }
 	        	}
 	        	else if(respuesta.equals("5")) {
 	        		disponibles.forEach((k,v)-> 
@@ -123,7 +120,7 @@ public class Main {
 	                	System.out.println("Tipo:"+entry.getValue()+", Nombre:"+entry.getKey());
 	                }
 	        	}
-	        	else {
+	        	else if(!respuesta.equals("7")){
         			System.out.println("Selecciona una opcion valida.");
 	        	}
 	        }
