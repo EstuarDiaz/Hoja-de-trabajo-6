@@ -1,3 +1,7 @@
+import java.util.Map;
+import java.util.HashMap;
+import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 public class Factory<K,V> {
 	//selecciona la implementacion a utilizar para map
@@ -5,12 +9,12 @@ public class Factory<K,V> {
    public Map<K,V> getMap(String entry) {
     // seleccion de la implementacion a utilizar:
 	if (entry.equals("HASH"))
-      return new Hastable<K,V>(); //regresa HashMap
+      return new HashMap<K,V>(); //regresa HashMap
 	else if (entry.equals("TREE"))
-      return new MapList<K,V>(); //regresa TreeMap
+      return new TreeMap<K,V>(); //regresa TreeMap
 	else if (entry.equals("LINKED"))
-	      return new MapList<K,V>(); // regresa LinkedHashMap
+	      return new LinkedHashMap<K,V>(); // regresa LinkedHashMap
 	else 
-		return new Hastable<K,V>(); //default: regresa HashMap
+		return new HashMap<K,V>(); //default: regresa HashMap
    }
 }
