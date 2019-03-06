@@ -1,1 +1,6 @@
-El hasmap tiene una complejidad constante, ya que si el hash es bueno, no tendra colisiones y se hallara la posicion buscada en una sola operacion. Si el hash llegara a repetirse, el HashMap lo soluciona de tal forma que las operaciones para lidiar con las colisiones se mantene como un numero pequeño, por lo que lo podemos considerar constante.
+El map tiene una complejidad constante, ya que si el hash es bueno, no tendra colisiones y se hallara la posicion buscada en una sola operacion. Si el map llegara a repetirse, el map lo soluciona de tal forma que las operaciones para lidiar con las colisiones se mantene como un numero pequeño, por lo que lo podemos considerar constante. Esto varia segun la imlementacion, pero se obtienen resultados similares para cada una de ellas.
+
+(Tiempos para cargar la lista de cartas en el Map)
+Tiempo promedio HashMap: 180 milisegundos, 
+Tiempo promedio TreeMap: 190 milisegundos,
+Tiempo promedio LikedHashMap: 184 milisegundos
